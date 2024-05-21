@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option go_package = "grpc_chat/chat";
+package chat;
+
+message Message {
+  string content = 1;
+  string author = 2;
+  Channel channel = 3;
+  optional int64 timestamp = 4;
+}
+
+message Messages {
+  repeated Message messages = 1;
+  optional string next = 2;
+  optional string prev = 3;
+}
+
+message ListMessagesRequest {
+  Channel channel = 1;
+  optional string url = 2;
+}
+
+message Channel { string name = 1; }
+
+message Channels {
+  repeated Channel channels = 1;
+  optional string next = 2;
+  optional string prev = 3;
+}
+
+message ListChannelsRequest { optional string url = 1; }
+
+service Chat {
+  rpc CreateChannel(Channel) returns (Channel) {}
+  rpc ListChannels(ListChannelsRequest) returns (Channels) {}
+  rpc SendMessage(Message) returns (Message) {}
+  rpc ListMessages(ListMessagesRequest) returns (Messages) {}
+}
