@@ -11,11 +11,8 @@ import (
 	"google.golang.org/grpc"
 )
 
-var log logging.Logger
-
 func main() {
-	var err error
-	log, err = logging.NewLoggerFromEnv(context.Background(), logging.Default, "chat")
+	log, err := logging.NewLoggerFromEnv(context.Background(), logging.Default, "chat")
 	if err != nil {
 		panic(fmt.Sprintf("Failed to initialise logger: %s", err.Error()))
 	}
