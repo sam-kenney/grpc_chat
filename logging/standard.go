@@ -64,10 +64,6 @@ func (l StandardLogger) Critical(payload interface{}) {
 	l.Log(Critical, payload)
 }
 
-func (l StandardLogger) Emergency(err error) {
-	l.Log(Emergency, err.Error())
-}
-
 func (l StandardLogger) Err(err error) {
 	l.Log(Critical, err.Error())
 }
