@@ -17,8 +17,7 @@ func main() {
 	var err error
 	log, err = logging.NewLoggerFromEnv(context.Background(), logging.Default, "chat")
 	if err != nil {
-		fmt.Printf("Failed to initialise logger: %s", err.Error())
-		return
+		panic(fmt.Sprintf("Failed to initialise logger: %s", err.Error()))
 	}
 
 	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", 8080))
