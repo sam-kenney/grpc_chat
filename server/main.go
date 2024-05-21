@@ -20,6 +20,7 @@ func main() {
 	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", 8080))
 	if err != nil {
 		log.Err(err)
+		panic(fmt.Sprintf("Failed to start listener %s", err.Error()))
 	}
 	defer listener.Close()
 
